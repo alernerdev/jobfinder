@@ -1,0 +1,16 @@
+{
+  "name": "jobfinder",
+  "description": "Job Finding App -- demonstrates CI with Angular and Node",
+  "main": "index.js",
+  "authors": [
+    "Alex Lerner"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "angular": "^1.5.9",
+    "bootstrap": "^3.3.7"
+  }
+}
