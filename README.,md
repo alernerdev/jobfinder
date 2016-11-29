@@ -3,3 +3,5 @@ Notes
 - my code is served out of public folder -- express references that.
 - bower_components and have been moved there and are referenced relative to that public folder
 - all other path references, such as app where my code is, is relative to public as well
+- not sure if I need this command to view the deployed app on heroku:
+-- heroku ps:scale web=1
