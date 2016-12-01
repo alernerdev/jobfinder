@@ -1,30 +1,43 @@
-/**
- * Created by rbailey on 24/10/2014.
- */
-var express = require('express');
-var app = express();
+(function () {
 
-require('./models/Job');     // Mongoose model, we dont need the return, this script just registers the model with mongoose...
-var jobsData = require('./jobsData');
+    'use strict';
 
-// This adds the api route to express, passing in our Data Access layer (jobsData) express app (app)
-// No need to capture the return value as it just inerts routes in the express app.
-//require('./jobs-service')(jobsData, app);
+    var express = require('express');
+    var app = express();
 
-app.set('views', __dirname);
-app.set('view engine', 'jade');
+    var jobsData = require('./jobsData');
 
-app.use(express.static(__dirname + '/public'));
+    // This adds the api route to express, passing in our Data Access layer (jobsData) express app (app)
+    // No need to capture the return value as it just inerts routes in the express app.
+    //require('./jobs-service')(jobsData, app);
 
-app.get('*', function(req, res){
-    res.render('index');
-})
+    app.set('views', __dirname);
+    app.set('view engine', 'jade');
 
-jobsData.connectDb('mongodb://localhost/jobfinder')
-    .then(function(){
-        console.log('Connected to MongoDB ok');
-        jobsData.seedJobs();
-    });
+    app.use(express.static(__dirname + '/public'));
+
+    app.get('/api/jobs', function(req, res){
+        jobsData.findJobs({}, function(err, docs) {
+            if (err) {
+                // send something back here
+                return;
+            }
+
+            // use send when sending data
+            res.send(docs);
+        });
+    })
+
+    app.get('*', function (req, res) {
+        // use render when rendering templates with html
+        res.render('index');
+    })
+
+    jobsData.connectDB('mongodb://localhost/jobfinder', function () {
+        console.log('database is ready to be used');
+    })
 
 
-app.listen(process.env.PORT || 3000);
+    app.listen(process.env.PORT || 3000);
+
+})()
