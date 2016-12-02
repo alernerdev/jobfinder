@@ -15,7 +15,8 @@ module.exports = function(db, app) {
     app.get('/api/jobs', function(req, res) {
         console.log("service received get");
 
-        db.findJobs().then(function(collection) {
+        db.findJobs(function(err, collection) {
+            console.log("returned from findingJobs and about to send it back");
             res.send(collection);
         });
     });

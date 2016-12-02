@@ -66,8 +66,8 @@
         })
     }
 
-    function findJobs(query, callback) {
-        collection.find(query).toArray(function (err, docs) {
+    function findJobs(callback) {
+        collection.find({}).toArray(function (err, docs) {
             if (err) {
                 console.log("failed to find");
                 throw err;
