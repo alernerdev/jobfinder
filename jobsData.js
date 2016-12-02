@@ -31,6 +31,14 @@
         });
     }
 
+    function resetJobs(callback) {
+        db.dropCollection(collectionName, function(err, result) {
+            console.log("resetJobs result " + result);
+            callback();
+        });
+    }
+
+
     function seedJobs(callback) {
         collection.find({}).toArray(function (err, docs) {
             if (err) {
@@ -78,7 +86,9 @@
 
     module.exports = {
         connectDB: connectDB,
-        findJobs: findJobs
+        findJobs: findJobs,
+        resetJobs : resetJobs,
+        seedJobs : seedJobs
     }
 
 })()
