@@ -1,7 +1,12 @@
 Notes
 
 - my code is served out of public folder -- express references that.
-- bower_components and have been moved there and are referenced relative to that public folder
+- bower_components have been moved there and are referenced relative to that public folder
 - all other path references, such as app where my code is, is relative to public as well
 - not sure if I need this command to view the deployed app on heroku:
 -- heroku ps:scale web=1
+- codeship -- hooks up to the repository and runs a build every check in
+- Karma -- for front end testing
+- PhantomJS -- replaces a browser.  This is for situations when working on a remote machine
+(such as Cloud9 environment) and the browser is not available. PhantomJS also emulates multiple
+browsers

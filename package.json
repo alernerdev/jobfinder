@@ -15,14 +15,20 @@
     "mongodb": "^2.2.12"
   },
   "repository": {
-    "type":"git",
+    "type": "git",
     "url": "https://github.com/alernerdev/jobfinder.git"
   },
   "devDependencies": {
     "bower": "^1.8.0",
     "chai": "^3.5.0",
     "chalk": "^1.1.3",
+    "karma": "^1.3.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.2",
     "mocha": "^3.2.0",
+    "phantomjs": "^2.1.7",
     "supertest": "^2.0.1"
   }
 }

@@ -8,8 +8,16 @@
     var collection = null;
     var db = null;
 
+    function closeConnection() {
+        // THIS ISNT WORKING!!!
+        // mongoClient.close();
+    }
+
     function connectDB(connectionString, callback) {
         mongoClient.connect(connectionString, function (err, database) {
+            if (err)
+                throw err;
+
             console.log("connected successfully to DB");
 
             db = database;
@@ -88,7 +96,9 @@
         connectDB: connectDB,
         findJobs: findJobs,
         resetJobs : resetJobs,
-        seedJobs : seedJobs
+        seedJobs : seedJobs,
+        saveJob: createJob,
+        closeConnection : closeConnection
     }
 
 })()

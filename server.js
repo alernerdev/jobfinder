@@ -8,10 +8,6 @@
     var jobsData = require('./jobsData');
     require("./jobsService.js")(jobsData, app);
 
-    // This adds the api route to express, passing in our Data Access layer (jobsData) express app (app)
-    // No need to capture the return value as it just inerts routes in the express app.
-    //require('./jobs-service')(jobsData, app);
-
     app.set('views', __dirname);
     app.set('view engine', 'jade');
 

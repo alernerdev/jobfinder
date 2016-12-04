@@ -1,7 +1,3 @@
-/**
- * Created by rbailey on 24/10/2014.
- */
-
 app = angular.module('app', ['ngResource']);
 
 angular.module('app').controller('testCtrl', function($scope, $resource){

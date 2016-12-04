@@ -7,7 +7,7 @@ var app = express();
 var dataSavedJob;
 
 /* this is a mock. It seems the idea here is to test posting of jobs to my service, and the service simply writes to the db
-object without really knowing that its not a database.  I believe the only reason we went to this extent is for the sake 
+object without really knowing that its not a database.  I believe the only reason we went to this extent is for the sake
 of the demo and to demonstrate the testing of each layer separately.  The service COULD be writing to the database instead
 of this mock object
  */
@@ -21,7 +21,7 @@ var db = {
     }
 };
 
-var jobService = require("../jobsService")(db, app);
+var jobService = require("../../jobsService")(db, app);
 
 describe("get jobs", function() {
     it("get should give me a json list of jobs", function(done) {
