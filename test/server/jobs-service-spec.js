@@ -1,3 +1,6 @@
+/*
+    this tests talking to my service
+*/
 var expect = require("chai").expect;
 var request = require("supertest");
 var express = require('express');
@@ -6,10 +9,8 @@ var app = express();
 
 var dataSavedJob;
 
-/* this is a mock. It seems the idea here is to test posting of jobs to my service, and the service simply writes to the db
-object without really knowing that its not a database.  I believe the only reason we went to this extent is for the sake
-of the demo and to demonstrate the testing of each layer separately.  The service COULD be writing to the database instead
-of this mock object
+/* this is a mock. The idea here is to test posting of jobs to my service, and the service simply writes to the db
+object without really knowing that its not a database.  This demonstrates the testing of each layer separately.
  */
 var db = {
     saveJob: function(job) {

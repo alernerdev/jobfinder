@@ -13,20 +13,6 @@
 
     app.use(express.static(__dirname + '/public'));
 
-    /*
-    app.get('/api/jobs', function(req, res){
-        jobsData.findJobs({}, function(err, docs) {
-            if (err) {
-                // send something back here
-                return;
-            }
-
-            // use send when sending data
-            res.send(docs);
-        });
-    })
-    */
-
     app.get('*', function (req, res) {
         // use render when rendering templates with html
         res.render('index');
@@ -42,7 +28,6 @@
     jobsData.connectDB('mongodb://localhost/jobfinder', function () {
         console.log('database is ready to be used');
     })
-
 
     app.listen(process.env.PORT || 3000);
 

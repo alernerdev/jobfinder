@@ -8,10 +8,19 @@ script(type='text/javascript', src = 'app/jobs.js')
 
 body(ng-app = 'app')
     .container
-        h1 Find a job Today!
         div(ng-controller='testCtrl')
-            .list-group
-                a.list-group-item(href='#')(ng-repeat='job in jobs')
-                    h4.list-group-item-heading {{ job.title }}
-                    p.list-group-item-text {{ job.description }}
-            div {{ test }}
+            h1 Post a New Job
+            form(ng-submit="submit()")
+                .form-group
+                    input.form-control(placeholder="Job Title" ng-model='title')
+                .form-group
+                    textarea.form-control(placeholder="Description" ng-description='description')
+                .form-group
+                    button.btn.btn-primary(type="submit") Post
+
+            h1 Find a job Today!
+                .list-group
+                    a.list-group-item(href='#')(ng-repeat='job in jobs')
+                        h4.list-group-item-heading {{ job.title }}
+                        p.list-group-item-text {{ job.description }}
+                div {{ test }}

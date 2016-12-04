@@ -1,25 +1,32 @@
-var bodyParser = require('body-parser');
+/*
+    service talks to data access layer
+*/
 
-module.exports = function(db, app) {
+(function () {
 
-    console.log("service received post");
+        'use strict';
 
-    app.use(bodyParser.json());
+        var bodyParser = require('body-parser');
 
-    app.post('/api/jobs', function (req, res) {
+        module.exports = function (db, app) {
 
-        db.saveJob(req.body);
-        res.end();
-    });
+            console.log("service received post");
 
-    app.get('/api/jobs', function(req, res) {
-        console.log("service received get");
+            app.use(bodyParser.json());
 
-        db.findJobs(function(err, collection) {
-            console.log("returned from findingJobs and about to send it back");
-            res.send(collection);
-        });
-    });
+            app.post('/api/jobs', function (req, res) {
 
-};
+                db.saveJob(req.body);
+                res.end();
+            });
 
+            app.get('/api/jobs', function (req, res) {
+                console.log("service received get");
+
+                db.findJobs(function (err, collection) {
+                    console.log("returned from findingJobs and about to send them back");
+                    res.send(collection);
+                });
+            });
+        };
+})()

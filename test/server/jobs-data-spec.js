@@ -1,3 +1,6 @@
+/*
+    this tests the data access layer
+*/
 var expect = require('chai').expect;
 var chalk = require('chalk');
 var jobsData = require('../../jobsData');
@@ -6,10 +9,11 @@ var dbUri = 'mongodb://localhost/jobfinder';
 
 describe("get jobs", function () {
 
+    // 'before' gets the jobs var just once....
+    // .... and the rest of the tests test the jobs retrieved
     var jobs = null;
-
     before(function (done) {
-        jobsData.connectDB('mongodb://localhost/jobfinder', function () {
+        jobsData.connectDB(dbUri, function () {
             console.log('database is ready to be used');
 
             function seedJobsCompleted() {
@@ -32,7 +36,6 @@ describe("get jobs", function () {
 
             jobsData.resetJobs(resetJobsCompleted);
         });
-
     });
 
     it("should never be empty since jobs are seeded", function () {
@@ -55,12 +58,10 @@ describe("db save jobs", function () {
     }
     var jobs;
 
-    function saveTestJob() {
-        return jobsData.saveJob();
-    }
-
+    // 'before' clears out everything and saves one job
+    // this is the starting point
     before(function (done) {
-        jobsData.connectDB('mongodb://localhost/jobfinder', function () {
+        jobsData.connectDB(dbUri, function () {
             console.log('database is ready to be used');
 
             function saveJobCompleted() {
@@ -92,6 +93,4 @@ describe("db save jobs", function () {
     it("should have one after saving one job", function () {
         expect(jobs).to.have.length(1);
     });
-
-
 });
